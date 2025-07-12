@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ skill_name }} Roadmap</title>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-50 p-6">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">{{ skill_name }} Career Roadmap</h1>
+
+    {% if roadmaps %}
+        <div class="space-y-4">
+            {% for step in roadmaps %}
+                <div class="bg-white shadow-sm border border-gray-200 p-4 rounded-lg">
+                    <h2 class="text-xl font-semibold text-indigo-700">{{ step.stage }}</h2>
+
+                    <!-- Safely render HTML content from description -->
+                    <div class="text-gray-700 mt-2 prose prose-sm max-w-none">
+                        {{ step.description|safe }}
+                    </div>
+
+                    {% if step.resource_link %}
+                        <a href="{{ step.resource_link }}" target="_blank" class="text-blue-600 underline mt-2 block">Learn More</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-gray-500">No roadmap steps found for this skill.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set a New Goal</title>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen p-6">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Set a New Goal</h1>
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Title</label>
+                {{ form.title }}
+                {{ form.title.errors }}
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Description</label>
+                {{ form.description }}
+                {{ form.description.errors }}
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">Deadline</label>
+                {{ form.deadline }}
+                {{ form.deadline.errors }}
+            </div>
+
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                Save Goal
+            </button>
+        </form>
+    </div>
+</body>
+</html>

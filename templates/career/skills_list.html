@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-6 bg-white shadow rounded">
+    <h2 class="text-2xl font-semibold mb-4">Skills You Added</h2>
+    {% if skills %}
+        <ul class="list-disc list-inside space-y-2">
+            {% for skill in skills %}
+                <li><strong>{{ skill.skill_name }}</strong> - {{ skill.get_proficiency_display }} ({{ skill.experience }} yrs)</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-gray-600">You haven’t added any skills yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!-- templates/base.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SkillMate Pro{% endblock %}</title>
+    <link href="{% static 'css/output.css' %}" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <header class="p-4 bg-blue-600 text-white font-bold">SkillMate Pro</header>
+
+    <main class="p-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="p-4 bg-gray-200 text-center text-sm text-gray-700">
+        &copy; 2025 SkillMate Pro
+    </footer>
+</body>
+</html>
